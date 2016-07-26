@@ -21,9 +21,9 @@ api.addKeyFromModal = function(name) {
   element(by.partialButtonText('Generate Key')).click();
   bedrock.waitForModalTransition();
   if(name !== undefined) {
-    var labelElement = element(by.model('$ctrl.model.key.label'));
-    labelElement.clear();
-    labelElement.sendKeys(name);
+    element(by.model('$ctrl.model.key.label'))
+      .clear()
+      .sendKeys(name);
   }
   element(by.partialButtonText('Save')).click();
   bedrock.waitForModalTransition();
