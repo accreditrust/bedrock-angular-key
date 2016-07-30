@@ -1,4 +1,5 @@
 var bedrock = global.bedrock;
+var EC = protractor.ExpectedConditions;
 
 var api = {};
 module.exports = api;
@@ -15,18 +16,20 @@ api.get = function(slug) {
 };
 
 api.addKeyFromModal = function(name) {
-  var modal = element(by.modal());
-  modal.element(by.partialButtonText('Add Key')).click();
-  bedrock.waitForModalTransition();
+  modal.element(by.buttonText('Add Key')).click();
+  browser.wait(
+    EC.visibilityOf(element.by.tagName('br-generate-key-pair-modal')), 3000);
   element(by.partialButtonText('Generate Key')).click();
-  bedrock.waitForModalTransition();
-  if(name !== undefined) {
+  browser.wait(
+    EC.elementToBeClickable(element.by.buttonText('Save')), 3000);
+  if(name) {
     element(by.model('$ctrl.model.key.label'))
       .clear()
       .sendKeys(name);
   }
-  element(by.partialButtonText('Save')).click();
-  bedrock.waitForModalTransition();
+  element(by.buttonText('Save')).click();
+  browser.wait(
+    EC.invisibilityOf(element.by.tagName('br-generate-key-pair-modal')), 3000);
 };
 
 api.deselectKeyFromModal = function() {
