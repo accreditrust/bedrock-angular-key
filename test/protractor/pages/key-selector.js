@@ -16,7 +16,7 @@ api.get = function(slug) {
 };
 
 api.addKeyFromModal = function(name) {
-  modal.element(by.buttonText('Add Key')).click();
+  element(by.buttonText('Add Key')).click();
   browser.wait(
     EC.visibilityOf(element.by.tagName('br-generate-key-pair-modal')), 3000);
   element(by.partialButtonText('Generate Key')).click();
