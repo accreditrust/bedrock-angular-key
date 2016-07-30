@@ -1,5 +1,4 @@
 var bedrock = global.bedrock;
-var EC = protractor.ExpectedConditions;
 
 var api = {};
 module.exports = api;
@@ -9,6 +8,7 @@ var element = global.element;
 var should = global.should;
 var expect = global.expect;
 var protractor = global.protractor;
+var EC = protractor.ExpectedConditions;
 
 api.get = function(slug) {
   bedrock.get('/i/' + slug);
