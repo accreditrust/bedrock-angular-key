@@ -18,10 +18,10 @@ api.get = function(slug) {
 api.addKeyFromModal = function(name) {
   element(by.buttonText('Add Key')).click();
   browser.wait(
-    EC.visibilityOf(element.by.tagName('br-generate-key-pair-modal')), 3000);
+    EC.visibilityOf(element(by.tagName('br-generate-key-pair-modal'))), 3000);
   element(by.partialButtonText('Generate Key')).click();
   browser.wait(
-    EC.elementToBeClickable(element.by.buttonText('Save')), 3000);
+    EC.elementToBeClickable(element(by.buttonText('Save'))), 3000);
   if(name) {
     element(by.model('$ctrl.model.key.label'))
       .clear()
@@ -29,7 +29,7 @@ api.addKeyFromModal = function(name) {
   }
   element(by.buttonText('Save')).click();
   browser.wait(
-    EC.invisibilityOf(element.by.tagName('br-generate-key-pair-modal')), 3000);
+    EC.invisibilityOf(element(by.tagName('br-generate-key-pair-modal'))), 3000);
 };
 
 api.deselectKeyFromModal = function() {
