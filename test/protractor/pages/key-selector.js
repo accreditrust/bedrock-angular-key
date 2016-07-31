@@ -22,8 +22,9 @@ api.addKeyFromModal = function(name) {
   browser.wait(
     EC.visibilityOf(element(by.tagName('br-generate-key-pair-modal'))), 3000);
   element(by.partialButtonText('Generate Key')).click();
+  // extend timeout, key generation can take some time
   browser.wait(
-    EC.elementToBeClickable(element(by.buttonText('Save'))), 3000);
+    EC.elementToBeClickable(element(by.buttonText('Save'))), 30000);
   if(name) {
     element(by.model('$ctrl.model.key.label'))
       .clear()
